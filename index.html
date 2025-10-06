@@ -42,6 +42,7 @@
         <div><label class="block mb-1 font-medium">Quelles sont selon toi les qualités essentielles d’un modérateur ?</label><textarea id="qualites" class="border rounded w-full p-2" required></textarea></div>
         <div><label class="block mb-1 font-medium">Comment réagirais-tu à une accusation injuste contre toi ?</label><textarea id="accusation" class="border rounded w-full p-2" required></textarea></div>
         <div><label class="block mb-1 font-medium">Comment contribuerais-tu à maintenir une ambiance saine sur le serveur ?</label><textarea id="ambiance" class="border rounded w-full p-2" required></textarea></div>
+        <div><label class="block mb-1 font-medium">🪪 Commentaires à ajouter !</label><textarea id="ambiance" class="border rounded w-full p-2" required></textarea></div>
 
         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Envoyer</button>
       </form>
@@ -97,7 +98,7 @@
 
       const fields = [
         "nom","age","discord","experience","motivation","disponibilite",
-        "infraction","impartialite","conflit","bots","abus","qualites","accusation","ambiance"
+        "infraction","impartialite","conflit","bots","abus","qualites","accusation","ambiance","commentaires"
       ];
 
       const data = {};
@@ -114,16 +115,17 @@
               { name: "👤 Nom complet", value: data.nom || "Non renseigné", inline: true },
               { name: "🎂 Âge", value: data.age || "Non renseigné", inline: true },
               { name: "💬 Pseudo Discord", value: data.discord || "Non renseigné", inline: false },
-              { name: "💼 Expérience", value: data.experience || "Non renseigné", inline: false },
-              { name: "🔥 Motivation", value: data.motivation || "Non renseigné", inline: false },
+              { name: "💼 Expérience en modération Discord", value: data.experience || "Non renseigné", inline: false },
+              { name: "🔥 Pourquoi veux-tu devenir modérateur sur notre serveur ?", value: data.motivation || "Non renseigné", inline: false },
               { name: "🕐 Disponibilités", value: data.disponibilite || "Non renseigné", inline: false },
-              { name: "⭐ Définition d’un bon animateur", value: data.definition || "Non renseigné", inline: false },
-              { name: "🎉 Idée d’événement", value: data.idee_event || "Non renseigné", inline: false },
-              { name: "⚠️ Gestion d’un membre toxique", value: data.conflit || "Non renseigné", inline: false },
-              { name: "🤖 Bots utilisés", value: data.bots || "Non renseigné", inline: false },
-              { name: "💎 Qualités", value: data.qualites || "Non renseigné", inline: false },
-              { name: "🎯 Objectifs", value: data.objectifs || "Non renseigné", inline: false },
-              { name: "🧩 Expérience de gestion de serveur", value: data.serveur || "Non renseigné", inline: false }
+              { name: "⭐ Comment réagirais-tu face à un membre qui enfreint le règlement ?", value: data.definition || "Non renseigné", inline: false },
+              { name: "🎉 Quelle est ta méthode pour rester impartial lors d’un conflit ?", value: data.idee_event || "Non renseigné", inline: false },
+              { name: "⚠️ Comment gérerais-tu un conflit entre deux membres ?", value: data.conflit || "Non renseigné", inline: false },
+              { name: "🤖 Connais-tu certains bots de modération ? Lesquels ?", value: data.bots || "Non renseigné", inline: false },
+              { name: "💎 Que ferais-tu si un autre modérateur abuse de ses pouvoirs ?", value: data.qualites || "Non renseigné", inline: false },
+              { name: "🎯 Quelles sont selon toi les qualités essentielles d’un modérateur ?", value: data.objectifs || "Non renseigné", inline: false },
+              { name: "🧩 Comment réagirais-tu à une accusation injuste contre toi ?", value: data.serveur || "Non renseigné", inline: false },
+              { name: "🪪 commentaires", value: data.serveur || "Non renseigné", inline: false }
             ],
             footer: {
               text: `Entretien réalisé(e) par ${currentUser.username} • ${new Date().toLocaleString("fr-FR")}`
