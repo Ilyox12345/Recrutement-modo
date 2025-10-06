@@ -52,7 +52,7 @@
 
   <script>
     // --- Configuration Webhook Discord Modération ---
-    const WEBHOOK_URL = "https://discord.com/api/webhooks/1424116598436008048/stxcU6W-i-5efTk0hOxMCaiQgzApMTIbJlekoEeYhBRKMJOwN95Y3Ngg0AgthTqi7pkB"; // 👉 Ton webhook Discord pour la modération
+    const WEBHOOK_URL = "https://discord.com/api/webhooks/1424478804465946735/A_uSKFSxvAtG3t_Oa3wfG1PJ1wP5lpIgEa8btYHxQM69wTsXqb3EyhkghaAO7lITek4r"; // 👉 Ton webhook Discord pour la modération
 
     const USERS = [
       { username: "Neil", password: "Neil@@@" },
@@ -103,12 +103,33 @@
       const data = {};
       fields.forEach(f => data[f] = document.getElementById(f).value);
 
-      const content = Object.entries(data)
-        .map(([k, v]) => `**${k.replace('_', ' ')}:** ${v}`)
-        .join('\\n');
-
       const payload = {
-        content: `🛡️ **Nouvel entretien Modérateur Discord**\\nSoumis par: **${currentUser.username}**\\n\\n${content}`
+        username: "Recrutement Animateur",
+        embeds: [
+          {
+            title: "📝 Nouveau entretien fait par ${currentUser.username} !",
+            color: 0x5865F2,
+            thumbnail: { url: "https://cdn-icons-png.flaticon.com/512/5968/5968756.png" },
+            fields: [
+              { name: "👤 Nom complet", value: data.nom || "Non renseigné", inline: true },
+              { name: "🎂 Âge", value: data.age || "Non renseigné", inline: true },
+              { name: "💬 Pseudo Discord", value: data.discord || "Non renseigné", inline: false },
+              { name: "💼 Expérience", value: data.experience || "Non renseigné", inline: false },
+              { name: "🔥 Motivation", value: data.motivation || "Non renseigné", inline: false },
+              { name: "🕐 Disponibilités", value: data.disponibilite || "Non renseigné", inline: false },
+              { name: "⭐ Définition d’un bon animateur", value: data.definition || "Non renseigné", inline: false },
+              { name: "🎉 Idée d’événement", value: data.idee_event || "Non renseigné", inline: false },
+              { name: "⚠️ Gestion d’un membre toxique", value: data.conflit || "Non renseigné", inline: false },
+              { name: "🤖 Bots utilisés", value: data.bots || "Non renseigné", inline: false },
+              { name: "💎 Qualités", value: data.qualites || "Non renseigné", inline: false },
+              { name: "🎯 Objectifs", value: data.objectifs || "Non renseigné", inline: false },
+              { name: "🧩 Expérience de gestion de serveur", value: data.serveur || "Non renseigné", inline: false }
+            ],
+            footer: {
+              text: `Entretien réalisé(e) par ${currentUser.username} • ${new Date().toLocaleString("fr-FR")}`
+            }
+          }
+        ]
       };
 
       try {
